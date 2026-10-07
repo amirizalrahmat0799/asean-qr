@@ -1,0 +1,30 @@
+name: Release
+
+# Publishes to npm when a version tag is pushed: git tag v0.2.0 && git push origin v0.2.0
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write   # npm provenance / trusted publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm install -g npm@latest
+      - run: npm ci
+      - name: Tag matches package.json
+        run: test "v$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
+      - run: npm run typecheck && npm test && npm run build && npm run check:package && npm run smoke
+      - run: npm publish --provenance --access public
+        env:
+          # Not needed once trusted publishing is set up on npmjs.com; kept as a fallback
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
