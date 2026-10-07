@@ -4,7 +4,7 @@
 [![CI](https://github.com/amirizalrahmat0799/asean-qr/actions/workflows/ci.yml/badge.svg)](https://github.com/amirizalrahmat0799/asean-qr/actions/workflows/ci.yml)
 ![dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![size](https://img.shields.io/badge/min%2Bgzip-7.7%20kB-blue)
-[![license](https://img.shields.io/npm/l/asean-qr)](LICENSE)
+[![license](https://img.shields.io/github/license/amirizalrahmat0799/asean-qr)](LICENSE)
 
 Parse, validate and generate **Southeast Asian payment QR codes** with one API:
 
