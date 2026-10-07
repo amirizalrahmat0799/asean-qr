@@ -48,7 +48,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "asean-qr": "./dist/cli.js"
+    "asean-qr": "dist/cli.js"
   },
   "files": [
     "dist"
